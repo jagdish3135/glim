@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="136" viewBox="0 0 760 136" role="img" aria-label="Tokens by agent, 0k in total">
+<style>
+.bg{fill:#FFFFFF}.t{fill:#16181D;font:600 16px system-ui,sans-serif}.l{fill:#16181D;font:13px system-ui,sans-serif}.v{fill:#525965;font:12px ui-monospace,monospace}.track{fill:#EFEBE2}
+.b0{fill:#5644CC}.b1{fill:#AD2F76}
+@media (prefers-color-scheme: dark){.bg{fill:#151A22}.t,.l{fill:#E9EDF3}.v{fill:#A3AEBD}.track{fill:#232B37}.b0{fill:#9B8CFF}.b1{fill:#FF7AC6}}
+</style>
+<rect class="bg" width="760" height="136" rx="14"/>
+<text class="t" x="20" y="32">Tokens by agent · glim · 0k total</text>
+<text class="l" x="20" y="71">backend-dev</text><rect class="track" x="170" y="60" width="480" height="14" rx="7"/><rect class="b0" x="170" y="60" width="3" height="14" rx="7"/><text class="v" x="740" y="71" text-anchor="end">0k</text>
+<text class="l" x="20" y="99">ux-designer</text><rect class="track" x="170" y="88" width="480" height="14" rx="7"/><rect class="b1" x="170" y="88" width="3" height="14" rx="7"/><text class="v" x="740" y="99" text-anchor="end">0k</text>
+</svg>
