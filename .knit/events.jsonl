@@ -20,3 +20,4 @@
 {"ts":"2026-10-22T18:48:10+05:30","type":"watch","agent":"devops","status":"ok","msg":"Live site 200, fonts/badge/favicon load, .env.local not served"}
 {"ts":"2026-10-22T19:07:31+05:30","type":"decision","agent":"user","msg":"User found the UI generic; redesign in cyberpunk style"}
 {"ts":"2026-10-22T19:07:31+05:30","type":"agent_end","agent":"ux-designer","phase":"build","result":"done","msg":"Cyberpunk redesign: night/day themes, 360px ok, contrast >=5.17 (fixed destroy tag 3.3:1), README media regenerated"}
+{"ts":"2026-10-22T22:36:23+05:30","type":"note","agent":"frontend-dev","msg":"Fixed token steps: grid li split inline text into cells; now text flow with absolute STEP label"}

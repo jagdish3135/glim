@@ -262,9 +262,11 @@ h2 { font-size: clamp(2.8rem, 6.4vw, 5rem); }
 .hint q { font-style: normal; color: var(--ink); }
 .hint q::before, .hint q::after { color: var(--pink); }
 
-.steps { list-style: none; padding: 0; margin: 28px 0; display: grid; gap: 14px; max-width: 48em; counter-reset: s; }
-.steps li { counter-increment: s; display: grid; grid-template-columns: 82px 1fr; gap: 12px; align-items: baseline; }
-.steps li::before { content: "STEP_0" counter(s); font: 500 .7rem/1 var(--mono); color: var(--acid); letter-spacing: .06em; }
+.steps { list-style: none; padding: 0; margin: 28px 0; display: grid; gap: 16px; max-width: 48em; counter-reset: s; }
+/* Plain text flow: a grid here would turn every link, bold word and code snippet into its own cell */
+.steps li { counter-increment: s; position: relative; padding-left: 96px; line-height: 1.6; }
+.steps li::before { content: "STEP_0" counter(s); position: absolute; left: 0; top: .4em; font: 500 .7rem/1 var(--mono); color: var(--acid); letter-spacing: .06em; }
+.steps code { color: var(--cyan); padding: 1px 5px; border: 1px solid var(--line); white-space: nowrap; }
 :root[data-theme="light"] .steps li::before { color: var(--pink); }
 .perms { display: flex; flex-wrap: wrap; gap: 8px; }
 .perms span { font-size: .85rem; padding: 8px 12px; border: 1px solid var(--line); background: var(--panel); color: var(--muted); }
@@ -300,7 +302,8 @@ h2 { font-size: clamp(2.8rem, 6.4vw, 5rem); }
   .brand-tag { display: none; }
   .kana { display: none; }
   .section { padding-top: 72px; }
-  .steps li { grid-template-columns: 1fr; gap: 4px; }
+  .steps li { padding-left: 0; padding-top: 20px; }
+  .steps li::before { top: 0; }
   .hero { padding-top: 44px; }
 }
 @media (prefers-reduced-motion: reduce) {
