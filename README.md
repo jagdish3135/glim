@@ -6,12 +6,12 @@
 </picture>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/glim-mcp"><img alt="npm" src="https://img.shields.io/npm/v/glim-mcp?color=c8441d&label=npm"></a>
-  <img alt="17 MCP tools" src="https://img.shields.io/badge/MCP%20tools-17-1d1a16">
-  <img alt="Instagram Graph API v26" src="https://img.shields.io/badge/Instagram%20Graph%20API-v26-5f574b">
-  <img alt="Node 20+" src="https://img.shields.io/badge/node-%E2%89%A520-5f574b">
-  <img alt="Tests: 43 passing" src="https://img.shields.io/badge/tests-43%20passing-2e7d32">
-  <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-5f574b"></a>
+  <a href="https://www.npmjs.com/package/glim-mcp"><img alt="npm" src="https://img.shields.io/npm/v/glim-mcp?color=e8ff2a&labelColor=07080d&label=npm"></a>
+  <img alt="17 MCP tools" src="https://img.shields.io/badge/MCP%20tools-17-e8ff2a?labelColor=07080d">
+  <img alt="Instagram Graph API v26" src="https://img.shields.io/badge/Instagram%20Graph%20API-v26-2ee6ff?labelColor=07080d">
+  <img alt="Node 20+" src="https://img.shields.io/badge/node-%E2%89%A520-2ee6ff?labelColor=07080d">
+  <img alt="Tests: 43 passing" src="https://img.shields.io/badge/tests-43%20passing-ff3d8f?labelColor=07080d">
+  <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-2ee6ff?labelColor=07080d"></a>
 </p>
 
 <p align="center">
@@ -145,7 +145,7 @@ Read tools support `response_format: "json"` for structured output. Every tool h
 
 <img alt="Glim website, light theme" src="docs/readme/landing-light.jpg" width="100%">
 <img alt="Glim website, dark theme" src="docs/readme/landing-dark.jpg" width="100%">
-<img alt="Tool contact sheet on the website" src="docs/readme/tools-light.jpg" width="100%">
+<img alt="Tool contact sheet on the website" src="docs/readme/tools-dark.jpg" width="100%">
 <p align="center"><img alt="Glim website on a phone" src="docs/readme/phone.jpg" width="300"></p>
 </details>
 

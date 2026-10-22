@@ -7,150 +7,174 @@
   <meta name="description" content="Glim is an open-source MCP server for Instagram professional accounts. Read insights, publish posts and reels, manage comments and answer DMs from any AI chat, through Meta's official Graph API.">
   <meta property="og:title" content="Glim · run your Instagram from any AI chat">
   <meta property="og:description" content="17 MCP tools for Instagram Business and Creator accounts. Official API, two-step publishing, demo mode.">
-  <meta name="theme-color" content="#f6f1e7">
+  <meta name="theme-color" content="#07080d">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Chakra+Petch:wght@400;500;600&family=Martian+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script>
     // Set the theme before paint: saved choice, else the system setting
     try {
-      const t = localStorage.getItem("glim-theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      const t = localStorage.getItem("glim-theme") || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
       document.documentElement.dataset.theme = t;
-    } catch { document.documentElement.dataset.theme = "light"; }
+    } catch { document.documentElement.dataset.theme = "dark"; }
   </script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
+  <div class="grain" aria-hidden="true"></div>
 
   <header class="top">
     <div class="wrap top-row">
       <a class="brand" href="#" aria-label="Glim home">
-        <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3c1.2 7 5.8 11.8 13 13-7.2 1.2-11.8 6-13 13-1.2-7-5.8-11.8-13-13 7.2-1.2 11.8-6 13-13z" fill="currentColor"/><circle cx="26" cy="6" r="2.6" fill="var(--accent)"/></svg>
-        <span>glim</span>
+        <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2c1.3 7.6 6.3 12.7 14 14-7.7 1.3-12.7 6.4-14 14-1.3-7.6-6.3-12.7-14-14 7.7-1.3 12.7-6.4 14-14z"/></svg>
+        <span class="neon" data-text="GLIM">GLIM</span>
+        <span class="brand-tag">MCP//IG</span>
       </a>
       <nav class="nav" aria-label="Main">
-        <a href="#tools">Tools</a>
+        <a href="#tools">Modules</a>
         <a href="#setup">Setup</a>
         <a href="#token">Token</a>
         <a href="#faq">FAQ</a>
-        <a href="https://github.com/jagdish3135/glim" class="gh">GitHub</a>
+        <a href="https://github.com/jagdish3135/glim" class="gh">GitHub<span aria-hidden="true">_</span></a>
       </nav>
-      <button class="theme" type="button" id="theme" aria-label="Switch to dark theme">
-        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
-        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      <button class="theme" type="button" id="theme" aria-label="Switch to day theme">
+        <span class="theme-night" aria-hidden="true">Night</span><span class="theme-day" aria-hidden="true">Day</span>
       </button>
     </div>
   </header>
 
   <main id="main">
-    <section class="hero wrap">
-      <div class="hero-copy">
-        <p class="eyebrow">Open-source MCP server · v0.1</p>
-        <h1>Run your Instagram from <em>any AI chat.</em></h1>
-        <p class="lede">Glim gives Claude, Cursor and other AI agents 17 tools for your Instagram Business or Creator account. Check last week's reach, draft a reel, clear spam comments and answer DMs, all through Meta's official API.</p>
-        <div class="cmd" role="group" aria-label="Install command">
-          <code><span class="prompt" aria-hidden="true">$</span> npx -y glim-mcp</code>
-          <button type="button" class="copy" data-copy="npx -y glim-mcp">Copy</button>
+    <section class="hero">
+      <div class="floor" aria-hidden="true"></div>
+      <span class="kana" aria-hidden="true">グリム</span>
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="pulse" aria-hidden="true"></span>Open-source MCP server · v0.1 · <b>status: online</b></p>
+          <h1>
+            <span class="line">Run your</span>
+            <span class="line">Instagram</span>
+            <span class="line">from any</span>
+            <span class="line hot glitch" data-text="AI chat">AI chat</span><span class="caret" aria-hidden="true">_</span>
+          </h1>
+          <p class="lede">Glim gives Claude, Cursor and other AI agents 17 tools for your Instagram Business or Creator account. Check last week's reach, draft a reel, clear spam comments and answer DMs, all through Meta's official API.</p>
+          <div class="cmd" role="group" aria-label="Install command">
+            <code><span class="prompt" aria-hidden="true">&gt;</span> npx -y glim-mcp</code>
+            <button type="button" class="copy" data-copy="npx -y glim-mcp">Copy</button>
+          </div>
+          <div class="cta">
+            <a class="btn primary" href="#setup">Set it up · 2 min <span aria-hidden="true">→</span></a>
+            <a class="btn ghost" href="https://github.com/jagdish3135/glim">View on GitHub</a>
+          </div>
+          <p class="note"><b>Demo mode</b> runs a fictional bakery account until you add a token, so every tool can be tried first.</p>
         </div>
-        <div class="cta">
-          <a class="btn primary" href="#setup">Set it up in 2 minutes</a>
-          <a class="btn" href="https://github.com/jagdish3135/glim">View on GitHub</a>
-        </div>
-        <p class="note">Runs in <strong>demo mode</strong> with a sample bakery account until you add a token, so you can try every tool first.</p>
-      </div>
 
-      <figure class="chat" aria-label="Example conversation with Glim">
-        <div class="chat-bar"><span></span><span></span><span></span><b>Claude · glim connected</b></div>
-        <ol class="chat-log" id="chat">
-          <li class="msg user">How did my reels do this week? Hide any spam comments.</li>
-          <li class="tools"><span>ig_list_media</span><span>ig_get_media_insights</span><span>ig_list_comments</span><span>ig_hide_comment</span></li>
-          <li class="msg bot">Your monsoon bun reel was the winner: <b>22.4k views</b>, 13.9k reached, 9.4 s average watch. I hid 1 spam comment from @crypto.gains.4u.</li>
-          <li class="msg user">Post sourdough.jpg with “Sourdough Sunday 🥖 #pune”.</li>
-          <li class="tools"><span>ig_prepare_post</span></li>
-          <li class="msg bot">Draft ready, not public yet: 1 photo, caption “Sourdough Sunday 🥖 #pune”. Publish it?</li>
-          <li class="msg user">Yes, go.</li>
-          <li class="tools"><span>ig_publish_post</span></li>
-          <li class="msg bot ok">Published ✓ instagram.com/p/DEMO…</li>
-        </ol>
-      </figure>
+        <figure class="hud" aria-label="Example conversation with Glim">
+          <div class="hud-bar">
+            <span>CH-01 // Claude ⟷ glim</span>
+            <span class="signal" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+            <span class="ok-text">Link stable</span>
+          </div>
+          <ol class="chat-log" id="chat">
+            <li class="msg user">How did my reels do this week? Hide any spam comments.</li>
+            <li class="tools"><span class="r">ig_list_media</span><span class="r">ig_get_media_insights</span><span class="r">ig_list_comments</span><span class="w">ig_hide_comment</span></li>
+            <li class="msg bot">Your monsoon bun reel was the winner: <b>22.4k views</b>, 13.9k reached, 9.4 s average watch. I hid 1 spam comment from @crypto.gains.4u.</li>
+            <li class="msg user">Post sourdough.jpg with “Sourdough Sunday 🥖 #pune”.</li>
+            <li class="tools"><span class="w">ig_prepare_post</span></li>
+            <li class="msg bot">Draft ready, not public yet: 1 photo, caption “Sourdough Sunday 🥖 #pune”. Publish it?</li>
+            <li class="msg user">Yes, go.</li>
+            <li class="tools"><span class="w">ig_publish_post</span></li>
+            <li class="msg bot ok">Published ✓ instagram.com/p/DEMO…</li>
+          </ol>
+          <i class="corner tl" aria-hidden="true"></i><i class="corner br" aria-hidden="true"></i>
+        </figure>
+      </div>
     </section>
 
     <div class="ticker" aria-label="Highlights">
-      <div class="wrap ticker-row">
+      <div class="ticker-track">
         <span>17 tools</span><span>Official Graph API v26</span><span>Two-step publishing</span><span>Demo mode</span><span>Token never leaves your machine</span><span>MIT licensed</span>
+        <span aria-hidden="true">17 tools</span><span aria-hidden="true">Official Graph API v26</span><span aria-hidden="true">Two-step publishing</span><span aria-hidden="true">Demo mode</span><span aria-hidden="true">Token never leaves your machine</span><span aria-hidden="true">MIT licensed</span>
       </div>
     </div>
 
     <section id="tools" class="wrap section">
-      <h2>Every tool, one contact sheet</h2>
-      <p class="section-lede">Each frame is a group of tools your AI can call. Read-only tools are marked so clients can auto-approve them; the delete tool is marked destructive so they ask first.</p>
+      <p class="idx">// 01</p>
+      <h2>Modules</h2>
+      <p class="section-lede">Seventeen tools in six modules. Every tool tells your AI client what it does, so reads can run freely and the risky ones ask first.</p>
+      <ul class="legend" aria-label="Legend">
+        <li><span class="t r">read</span> no changes</li>
+        <li><span class="t w">write</span> changes your account</li>
+        <li><span class="t d">destroy</span> can't be undone, client asks first</li>
+      </ul>
       <div class="sheet">
-        <article class="frame">
-          <header><span class="num">01</span><h3>Profile &amp; posts</h3></header>
+        <article class="mod cutbox">
+          <header><span class="num">MOD.01</span><h3>Profile &amp; posts</h3></header>
           <ul>
-            <li><code>ig_get_profile</code> Account, followers, demo or live</li>
-            <li><code>ig_list_media</code> Posts and reels, paged</li>
-            <li><code>ig_get_media</code> One post, full caption and slides</li>
+            <li><span class="t r">read</span><code>ig_get_profile</code><span>Account, followers, demo or live</span></li>
+            <li><span class="t r">read</span><code>ig_list_media</code><span>Posts and reels, paged</span></li>
+            <li><span class="t r">read</span><code>ig_get_media</code><span>One post, full caption and slides</span></li>
           </ul>
         </article>
-        <article class="frame">
-          <header><span class="num">02</span><h3>Insights</h3></header>
+        <article class="mod cutbox">
+          <header><span class="num">MOD.02</span><h3>Insights</h3></header>
           <ul>
-            <li><code>ig_get_account_insights</code> Views, reach, engagement</li>
-            <li><code>ig_get_audience</code> Followers by city, age, gender</li>
-            <li><code>ig_get_media_insights</code> Per post, incl. watch time</li>
+            <li><span class="t r">read</span><code>ig_get_account_insights</code><span>Views, reach, engagement</span></li>
+            <li><span class="t r">read</span><code>ig_get_audience</code><span>Followers by city, age, gender</span></li>
+            <li><span class="t r">read</span><code>ig_get_media_insights</code><span>Per post, incl. watch time</span></li>
           </ul>
         </article>
-        <article class="frame">
-          <header><span class="num">03</span><h3>Publishing</h3></header>
+        <article class="mod cutbox">
+          <header><span class="num">MOD.03</span><h3>Publishing</h3></header>
           <ul>
-            <li><code>ig_prepare_post</code> Photo, carousel, reel or story draft</li>
-            <li><code>ig_publish_post</code> Goes live only after you confirm</li>
-            <li><code>ig_get_publishing_limit</code> 24-hour quota</li>
+            <li><span class="t w">write</span><code>ig_prepare_post</code><span>Photo, carousel, reel or story draft</span></li>
+            <li><span class="t w">write</span><code>ig_publish_post</code><span>Goes live only after you confirm</span></li>
+            <li><span class="t r">read</span><code>ig_get_publishing_limit</code><span>24-hour quota</span></li>
           </ul>
         </article>
-        <article class="frame">
-          <header><span class="num">04</span><h3>Comments</h3></header>
+        <article class="mod cutbox">
+          <header><span class="num">MOD.04</span><h3>Comments</h3></header>
           <ul>
-            <li><code>ig_list_comments</code> With replies and hidden state</li>
-            <li><code>ig_reply_to_comment</code> Reply or comment as you</li>
-            <li><code>ig_hide_comment</code> Hide spam, reversible</li>
-            <li><code>ig_delete_comment</code> <span class="tag">destructive</span></li>
+            <li><span class="t r">read</span><code>ig_list_comments</code><span>With replies and hidden state</span></li>
+            <li><span class="t w">write</span><code>ig_reply_to_comment</code><span>Reply or comment as you</span></li>
+            <li><span class="t w">write</span><code>ig_hide_comment</code><span>Hide spam, reversible</span></li>
+            <li><span class="t d">destroy</span><code>ig_delete_comment</code><span>Permanent; prefer hide</span></li>
           </ul>
         </article>
-        <article class="frame">
-          <header><span class="num">05</span><h3>Direct messages</h3></header>
+        <article class="mod cutbox">
+          <header><span class="num">MOD.05</span><h3>Direct messages</h3></header>
           <ul>
-            <li><code>ig_list_conversations</code> Inbox, newest first</li>
-            <li><code>ig_get_messages</code> Last 20 messages</li>
-            <li><code>ig_send_message</code> Reply within 24 hours</li>
+            <li><span class="t r">read</span><code>ig_list_conversations</code><span>Inbox, newest first</span></li>
+            <li><span class="t r">read</span><code>ig_get_messages</code><span>Last 20 messages</span></li>
+            <li><span class="t w">write</span><code>ig_send_message</code><span>Reply within 24 hours</span></li>
           </ul>
         </article>
-        <article class="frame">
-          <header><span class="num">06</span><h3>Hashtags</h3></header>
+        <article class="mod cutbox">
+          <header><span class="num">MOD.06</span><h3>Hashtags</h3></header>
           <ul>
-            <li><code>ig_search_hashtag</code> Top or recent public posts</li>
+            <li><span class="t r">read</span><code>ig_search_hashtag</code><span>Top or recent public posts</span></li>
           </ul>
-          <p class="frame-note">Needs a Facebook-login token (Meta's rule).</p>
+          <p class="mod-note">Needs a Facebook-login token. Meta's rule, not ours.</p>
         </article>
       </div>
     </section>
 
-    <section class="wrap section steps-sec" aria-labelledby="two-step">
+    <section class="wrap section" aria-labelledby="two-step">
+      <p class="idx">// 02</p>
       <h2 id="two-step">Nothing goes public by accident</h2>
-      <ol class="flow">
-        <li><span class="dot">1</span><h3>Draft</h3><p><code>ig_prepare_post</code> checks the caption (2,200 characters, 30 hashtags), uploads the media privately and shows a preview.</p></li>
-        <li><span class="dot">2</span><h3>You confirm</h3><p>Your AI shows you the draft. Drafts expire after 24 hours if you never say yes.</p></li>
-        <li><span class="dot">3</span><h3>Live</h3><p><code>ig_publish_post</code> publishes that exact draft and returns the link. It can't publish the same draft twice.</p></li>
+      <ol class="sequence">
+        <li><span class="step">01</span><h3>Draft</h3><p><code>ig_prepare_post</code> checks the caption (2,200 characters, 30 hashtags), uploads the media privately and returns a preview.</p></li>
+        <li><span class="step">02</span><h3>You confirm</h3><p>Your AI shows you the draft and waits. Drafts expire after 24 hours if you never say yes.</p></li>
+        <li class="live"><span class="step">03</span><h3>Live</h3><p><code>ig_publish_post</code> publishes that exact draft and returns the link. The same draft can't be published twice.</p></li>
       </ol>
     </section>
 
     <section id="setup" class="wrap section">
+      <p class="idx">// 03</p>
       <h2>Set it up</h2>
       <p class="section-lede">Start without a token to try the demo account. Add your token later; nothing else changes.</p>
-      <div class="tabs" data-tabs>
+      <div class="tabs cutbox" data-tabs>
         <div class="tablist" role="tablist" aria-label="MCP client">
           <button role="tab" id="t-desktop" aria-controls="p-desktop" aria-selected="true">Claude Desktop</button>
           <button role="tab" id="t-code" aria-controls="p-code" aria-selected="false" tabindex="-1">Claude Code</button>
@@ -188,9 +212,10 @@
       <p class="hint">Needs Node.js 20 or newer. Then ask: <q>Show my Instagram profile.</q></p>
     </section>
 
-    <section id="token" class="wrap section token">
+    <section id="token" class="wrap section">
+      <p class="idx">// 04</p>
       <h2>Get your access token</h2>
-      <ol class="numbered">
+      <ol class="steps">
         <li>Switch your Instagram account to <b>Professional</b> (Business or Creator) in the Instagram app.</li>
         <li>Create an app at <a href="https://developers.facebook.com/apps">developers.facebook.com</a> and add the <b>Instagram</b> product with <b>Instagram API with Instagram Login</b>.</li>
         <li>Under <b>Generate access tokens</b>, add your account and grant the permissions below.</li>
@@ -207,6 +232,7 @@
     </section>
 
     <section id="faq" class="wrap section faq">
+      <p class="idx">// 05</p>
       <h2>Questions</h2>
       <details>
         <summary>Is this safe for my account?</summary>
@@ -232,6 +258,7 @@
   </main>
 
   <footer class="foot">
+    <div class="hazard" aria-hidden="true"></div>
     <div class="wrap foot-row">
       <p>Glim is an independent open-source project, not affiliated with or endorsed by Meta or Instagram. MIT licensed · <a href="https://github.com/jagdish3135/glim">Source on GitHub</a></p>
       <!-- Built with Knit: a small badge that grows into a card on hover or keyboard focus.

@@ -18,12 +18,15 @@ const BASE = (process.argv[2] ?? "http://localhost:5190").replace(/\/$/, "");
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 const ffmpeg = (...args) => execFileSync("ffmpeg", ["-y", "-loglevel", "error", ...args], { stdio: "inherit" });
 const browser = await chromium.launch();
+// Grain and the moving grid floor are constant motion that bloats JPEGs, WebP and GIF; the media look the same without them.
+const STILL = ".grain { display: none !important; } .floor { animation: none !important; }";
 
 async function shot(theme, file, { size = { width: 1280, height: 800 }, scrollTo, fullPage = false } = {}) {
   const ctx = await browser.newContext({ viewport: size, deviceScaleFactor: 2, colorScheme: theme, reducedMotion: "reduce" });
   await ctx.addInitScript((t) => localStorage.setItem("glim-theme", t), theme);
   const page = await ctx.newPage();
   await page.goto(BASE);
+  await page.addStyleTag({ content: STILL });
   await page.evaluate(() => document.fonts.ready);
   if (scrollTo) await page.locator(scrollTo).scrollIntoViewIfNeeded();
   await wait(500);
@@ -31,20 +34,21 @@ async function shot(theme, file, { size = { width: 1280, height: 800 }, scrollTo
   await ctx.close();
 }
 
-await shot("light", "landing-light.jpg");
 await shot("dark", "landing-dark.jpg");
-await shot("light", "tools-light.jpg", { scrollTo: "#tools h2" });
-await shot("light", "phone.jpg", { size: { width: 390, height: 844 } });
+await shot("light", "landing-light.jpg");
+await shot("dark", "tools-dark.jpg", { scrollTo: "#tools h2" });
+await shot("dark", "phone.jpg", { size: { width: 390, height: 844 } });
 console.log("Screenshots done");
 
 // Hero chat demo video
 {
   const size = { width: 1280, height: 840 };
   const tmp = mkdtempSync(join(tmpdir(), "glim-rec-"));
-  const ctx = await browser.newContext({ viewport: size, recordVideo: { dir: tmp, size }, colorScheme: "light", reducedMotion: "no-preference" });
-  await ctx.addInitScript(() => localStorage.setItem("glim-theme", "light"));
+  const ctx = await browser.newContext({ viewport: size, recordVideo: { dir: tmp, size }, colorScheme: "dark", reducedMotion: "no-preference" });
+  await ctx.addInitScript(() => localStorage.setItem("glim-theme", "dark"));
   const page = await ctx.newPage();
   await page.goto(BASE);
+  await page.addStyleTag({ content: STILL });
   await wait(13_500);
   await ctx.close();
   const webm = join(tmp, readdirSync(tmp).find((f) => f.endsWith(".webm")));
@@ -74,11 +78,11 @@ console.log("Screenshots done");
     blocks.push({ name, args, text: r.content.map((c) => c.text).join("\n") });
   }
   const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
-  const html = `<html><head><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"></head>
-<body style="margin:0;background:#15130f;padding:28px;font:14px/1.6 'JetBrains Mono',monospace;color:#f1eadc;width:820px">
-<div id="card" style="background:#1e1b16;border:1px solid #3a342b;border-radius:16px;padding:22px 26px">
-<div style="color:#b3a893;margin-bottom:14px">glim-mcp · demo mode · real output</div>
-${blocks.map((b) => `<div style="color:#ff936f;font-weight:600;word-break:break-all">→ ${b.name}(${esc(JSON.stringify(b.args))})</div><pre style="margin:6px 0 20px;white-space:pre-wrap;font:inherit">${esc(b.text)}</pre>`).join("")}
+  const html = `<html><head><link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;500&display=swap" rel="stylesheet"></head>
+<body style="margin:0;background:#07080d;padding:28px;font:13px/1.65 'Martian Mono',monospace;color:#e6ebf5;width:860px">
+<div id="card" style="background:#0d0f18;border:1px solid #2ee6ff;box-shadow:0 0 30px -6px rgba(46,230,255,.45);padding:22px 26px;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px))">
+<div style="color:#9aa3b8;margin-bottom:14px;letter-spacing:.08em">CH-01 // GLIM-MCP · DEMO MODE · <span style="color:#e8ff2a">REAL OUTPUT</span></div>
+${blocks.map((b) => `<div style="color:#e8ff2a;font-weight:500;word-break:break-all">→ ${b.name}(${esc(JSON.stringify(b.args))})</div><pre style="margin:6px 0 20px;white-space:pre-wrap;font:inherit">${esc(b.text)}</pre>`).join("")}
 </div></body></html>`;
   const ctx = await browser.newContext({ viewport: { width: 880, height: 600 }, deviceScaleFactor: 2 });
   const page = await ctx.newPage();

@@ -2,12 +2,12 @@
 const root = document.documentElement;
 const themeBtn = document.getElementById("theme");
 function syncThemeButton() {
-  const dark = root.dataset.theme === "dark";
-  themeBtn.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
-  document.querySelector('meta[name="theme-color"]').content = dark ? "#15130f" : "#f6f1e7";
+  const dark = root.dataset.theme !== "light";
+  themeBtn.setAttribute("aria-label", dark ? "Night theme on. Switch to day theme" : "Day theme on. Switch to night theme");
+  document.querySelector('meta[name="theme-color"]').content = dark ? "#07080d" : "#e7e9e1";
 }
 themeBtn.addEventListener("click", () => {
-  root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
+  root.dataset.theme = root.dataset.theme === "light" ? "dark" : "light";
   try { localStorage.setItem("glim-theme", root.dataset.theme); } catch {}
   syncThemeButton();
 });
