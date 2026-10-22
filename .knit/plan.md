@@ -43,7 +43,7 @@ animated chat demo (reduced-motion aware), favicon + title, Knit footer badge. N
 - [x] 6 DM tools + hashtag tools (US-5, US-6)
 - [x] 7 Tests for validation, error mapping, host detection, publish/comment flows; smoke script
 - [x] 8 Landing page (US-8)
-- [ ] 9 Check: quality card, README with media + badge; then ask before GitHub / npm / Vercel
+- [x] 9 Check: quality card, README with media + badge; then ask before GitHub / npm / Vercel
 
 ## Decisions
 - Official API only (user choice); no scraping or password login: ToS-safe, no bans.

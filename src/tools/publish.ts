@@ -17,8 +17,9 @@ export async function waitForContainer(graph: Graph, id: string, signal: AbortSi
     const { status_code } = await graph.get<{ status_code: string }>(id, { fields: "status_code" }, signal);
     if (status_code !== "IN_PROGRESS" || Date.now() - start + graph.pollMs > maxMs) return status_code;
     await new Promise<void>((resolve, reject) => {
-      const t = setTimeout(resolve, graph.pollMs);
-      signal.addEventListener("abort", () => (clearTimeout(t), reject(signal.reason)), { once: true });
+      const onAbort = () => (clearTimeout(t), reject(signal.reason));
+      const t = setTimeout(() => (signal.removeEventListener("abort", onAbort), resolve()), graph.pollMs);
+      signal.addEventListener("abort", onAbort, { once: true });
     });
   }
 }

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 300" width="1280" height="300" role="img" aria-label="How Glim works: your AI client talks to Glim over MCP on your machine, and Glim calls Instagram's official Graph API with your token">
+<defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1d1a16"/></marker><marker id="b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5f574b"/></marker></defs>
+<rect width="1280" height="300" rx="24" fill="#f6f1e7"/>
+<text x="40" y="44" font-family="'JetBrains Mono', Consolas, 'Courier New', monospace" font-size="14" fill="#c8441d">HOW IT WORKS</text>
+<rect x="40" y="70" width="300" height="170" rx="14" fill="#fffaf0" stroke="#d9cfbd" stroke-width="1"/>
+<text x="62" y="110" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-weight="700" font-size="24" fill="#1d1a16">Your AI client</text>
+<text x="62" y="144" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#5f574b">Claude Desktop, Claude Code,</text><text x="62" y="170" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#5f574b">Cursor, any MCP host</text><text x="62" y="196" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#5f574b">You approve each action</text>
+<path d="M340 132 H482" stroke="#1d1a16" stroke-width="2" marker-end="url(#a)"/><path d="M490 178 H348" stroke="#5f574b" stroke-width="2" stroke-dasharray="5 5" marker-end="url(#b)"/>
+<text x="415" y="120" text-anchor="middle" font-family="'JetBrains Mono', Consolas, 'Courier New', monospace" font-size="13" fill="#1d1a16">MCP · stdio</text>
+<text x="415" y="200" text-anchor="middle" font-family="'JetBrains Mono', Consolas, 'Courier New', monospace" font-size="13" fill="#5f574b">answers</text>
+<rect x="490" y="70" width="300" height="170" rx="14" fill="#f0e3cf" stroke="#c8441d" stroke-width="2"/>
+<text x="512" y="110" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-weight="700" font-size="24" fill="#1d1a16">glim-mcp</text>
+<text x="512" y="144" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#5f574b">Runs on your computer</text><text x="512" y="170" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#5f574b">Checks input, previews posts</text><text x="512" y="196" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#5f574b">Token stays in env</text>
+<path d="M790 132 H932" stroke="#1d1a16" stroke-width="2" marker-end="url(#a)"/><path d="M940 178 H798" stroke="#5f574b" stroke-width="2" stroke-dasharray="5 5" marker-end="url(#b)"/>
+<text x="865" y="120" text-anchor="middle" font-family="'JetBrains Mono', Consolas, 'Courier New', monospace" font-size="13" fill="#1d1a16">HTTPS + Bearer</text>
+<text x="865" y="200" text-anchor="middle" font-family="'JetBrains Mono', Consolas, 'Courier New', monospace" font-size="13" fill="#5f574b">JSON</text>
+<rect x="940" y="70" width="300" height="170" rx="14" fill="#fffaf0" stroke="#d9cfbd" stroke-width="1"/>
+<text x="962" y="110" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-weight="700" font-size="24" fill="#1d1a16">Instagram Graph API</text>
+<text x="962" y="144" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#5f574b">Meta's official API (v26)</text><text x="962" y="170" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#5f574b">Business &amp; Creator accounts</text><text x="962" y="196" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#5f574b">No passwords, no scraping</text>
+<text x="40" y="276" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#5f574b">No token? Glim answers from a built-in fictional account (demo mode), so every tool can be tried safely.</text>
+</svg>
