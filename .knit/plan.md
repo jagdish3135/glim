@@ -42,7 +42,7 @@ animated chat demo (reduced-motion aware), favicon + title, Knit footer badge. N
 - [x] 5 Comment tools (US-4)
 - [x] 6 DM tools + hashtag tools (US-5, US-6)
 - [x] 7 Tests for validation, error mapping, host detection, publish/comment flows; smoke script
-- [ ] 8 Landing page (US-8)
+- [x] 8 Landing page (US-8)
 - [ ] 9 Check: quality card, README with media + badge; then ask before GitHub / npm / Vercel
 
 ## Decisions

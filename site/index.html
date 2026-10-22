@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Glim · Instagram MCP server for Claude, Cursor and any AI agent</title>
+  <meta name="description" content="Glim is an open-source MCP server for Instagram professional accounts. Read insights, publish posts and reels, manage comments and answer DMs from any AI chat, through Meta's official Graph API.">
+  <meta property="og:title" content="Glim · run your Instagram from any AI chat">
+  <meta property="og:description" content="17 MCP tools for Instagram Business and Creator accounts. Official API, two-step publishing, demo mode.">
+  <meta name="theme-color" content="#f6f1e7">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    // Set the theme before paint: saved choice, else the system setting
+    try {
+      const t = localStorage.getItem("glim-theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.dataset.theme = t;
+    } catch { document.documentElement.dataset.theme = "light"; }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="top">
+    <div class="wrap top-row">
+      <a class="brand" href="#" aria-label="Glim home">
+        <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3c1.2 7 5.8 11.8 13 13-7.2 1.2-11.8 6-13 13-1.2-7-5.8-11.8-13-13 7.2-1.2 11.8-6 13-13z" fill="currentColor"/><circle cx="26" cy="6" r="2.6" fill="var(--accent)"/></svg>
+        <span>glim</span>
+      </a>
+      <nav class="nav" aria-label="Main">
+        <a href="#tools">Tools</a>
+        <a href="#setup">Setup</a>
+        <a href="#token">Token</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://github.com/jagdish3135/glim" class="gh">GitHub</a>
+      </nav>
+      <button class="theme" type="button" id="theme" aria-label="Switch to dark theme">
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">Open-source MCP server · v0.1</p>
+        <h1>Run your Instagram from <em>any AI chat.</em></h1>
+        <p class="lede">Glim gives Claude, Cursor and other AI agents 17 tools for your Instagram Business or Creator account. Check last week's reach, draft a reel, clear spam comments and answer DMs, all through Meta's official API.</p>
+        <div class="cmd" role="group" aria-label="Install command">
+          <code><span class="prompt" aria-hidden="true">$</span> npx -y glim-mcp</code>
+          <button type="button" class="copy" data-copy="npx -y glim-mcp">Copy</button>
+        </div>
+        <div class="cta">
+          <a class="btn primary" href="#setup">Set it up in 2 minutes</a>
+          <a class="btn" href="https://github.com/jagdish3135/glim">View on GitHub</a>
+        </div>
+        <p class="note">Runs in <strong>demo mode</strong> with a sample bakery account until you add a token, so you can try every tool first.</p>
+      </div>
+
+      <figure class="chat" aria-label="Example conversation with Glim">
+        <div class="chat-bar"><span></span><span></span><span></span><b>Claude · glim connected</b></div>
+        <ol class="chat-log" id="chat">
+          <li class="msg user">How did my reels do this week? Hide any spam comments.</li>
+          <li class="tools"><span>ig_list_media</span><span>ig_get_media_insights</span><span>ig_list_comments</span><span>ig_hide_comment</span></li>
+          <li class="msg bot">Your monsoon bun reel was the winner: <b>22.4k views</b>, 13.9k reached, 9.4 s average watch. I hid 1 spam comment from @crypto.gains.4u.</li>
+          <li class="msg user">Post sourdough.jpg with “Sourdough Sunday 🥖 #pune”.</li>
+          <li class="tools"><span>ig_prepare_post</span></li>
+          <li class="msg bot">Draft ready, not public yet: 1 photo, caption “Sourdough Sunday 🥖 #pune”. Publish it?</li>
+          <li class="msg user">Yes, go.</li>
+          <li class="tools"><span>ig_publish_post</span></li>
+          <li class="msg bot ok">Published ✓ instagram.com/p/DEMO…</li>
+        </ol>
+      </figure>
+    </section>
+
+    <div class="ticker" aria-label="Highlights">
+      <div class="wrap ticker-row">
+        <span>17 tools</span><span>Official Graph API v26</span><span>Two-step publishing</span><span>Demo mode</span><span>Token never leaves your machine</span><span>MIT licensed</span>
+      </div>
+    </div>
+
+    <section id="tools" class="wrap section">
+      <h2>Every tool, one contact sheet</h2>
+      <p class="section-lede">Each frame is a group of tools your AI can call. Read-only tools are marked so clients can auto-approve them; the delete tool is marked destructive so they ask first.</p>
+      <div class="sheet">
+        <article class="frame">
+          <header><span class="num">01</span><h3>Profile &amp; posts</h3></header>
+          <ul>
+            <li><code>ig_get_profile</code> Account, followers, demo or live</li>
+            <li><code>ig_list_media</code> Posts and reels, paged</li>
+            <li><code>ig_get_media</code> One post, full caption and slides</li>
+          </ul>
+        </article>
+        <article class="frame">
+          <header><span class="num">02</span><h3>Insights</h3></header>
+          <ul>
+            <li><code>ig_get_account_insights</code> Views, reach, engagement</li>
+            <li><code>ig_get_audience</code> Followers by city, age, gender</li>
+            <li><code>ig_get_media_insights</code> Per post, incl. watch time</li>
+          </ul>
+        </article>
+        <article class="frame">
+          <header><span class="num">03</span><h3>Publishing</h3></header>
+          <ul>
+            <li><code>ig_prepare_post</code> Photo, carousel, reel or story draft</li>
+            <li><code>ig_publish_post</code> Goes live only after you confirm</li>
+            <li><code>ig_get_publishing_limit</code> 24-hour quota</li>
+          </ul>
+        </article>
+        <article class="frame">
+          <header><span class="num">04</span><h3>Comments</h3></header>
+          <ul>
+            <li><code>ig_list_comments</code> With replies and hidden state</li>
+            <li><code>ig_reply_to_comment</code> Reply or comment as you</li>
+            <li><code>ig_hide_comment</code> Hide spam, reversible</li>
+            <li><code>ig_delete_comment</code> <span class="tag">destructive</span></li>
+          </ul>
+        </article>
+        <article class="frame">
+          <header><span class="num">05</span><h3>Direct messages</h3></header>
+          <ul>
+            <li><code>ig_list_conversations</code> Inbox, newest first</li>
+            <li><code>ig_get_messages</code> Last 20 messages</li>
+            <li><code>ig_send_message</code> Reply within 24 hours</li>
+          </ul>
+        </article>
+        <article class="frame">
+          <header><span class="num">06</span><h3>Hashtags</h3></header>
+          <ul>
+            <li><code>ig_search_hashtag</code> Top or recent public posts</li>
+          </ul>
+          <p class="frame-note">Needs a Facebook-login token (Meta's rule).</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap section steps-sec" aria-labelledby="two-step">
+      <h2 id="two-step">Nothing goes public by accident</h2>
+      <ol class="flow">
+        <li><span class="dot">1</span><h3>Draft</h3><p><code>ig_prepare_post</code> checks the caption (2,200 characters, 30 hashtags), uploads the media privately and shows a preview.</p></li>
+        <li><span class="dot">2</span><h3>You confirm</h3><p>Your AI shows you the draft. Drafts expire after 24 hours if you never say yes.</p></li>
+        <li><span class="dot">3</span><h3>Live</h3><p><code>ig_publish_post</code> publishes that exact draft and returns the link. It can't publish the same draft twice.</p></li>
+      </ol>
+    </section>
+
+    <section id="setup" class="wrap section">
+      <h2>Set it up</h2>
+      <p class="section-lede">Start without a token to try the demo account. Add your token later; nothing else changes.</p>
+      <div class="tabs" data-tabs>
+        <div class="tablist" role="tablist" aria-label="MCP client">
+          <button role="tab" id="t-desktop" aria-controls="p-desktop" aria-selected="true">Claude Desktop</button>
+          <button role="tab" id="t-code" aria-controls="p-code" aria-selected="false" tabindex="-1">Claude Code</button>
+          <button role="tab" id="t-cursor" aria-controls="p-cursor" aria-selected="false" tabindex="-1">Cursor</button>
+        </div>
+        <div role="tabpanel" id="p-desktop" aria-labelledby="t-desktop" class="panel">
+          <p>Settings → Developer → Edit Config, then add Glim to <code>claude_desktop_config.json</code> and restart Claude.</p>
+          <div class="code"><button type="button" class="copy" data-copy-from="c-desktop">Copy</button><pre id="c-desktop">{
+  "mcpServers": {
+    "glim": {
+      "command": "npx",
+      "args": ["-y", "glim-mcp"],
+      "env": { "INSTAGRAM_ACCESS_TOKEN": "IGAA…your token…" }
+    }
+  }
+}</pre></div>
+        </div>
+        <div role="tabpanel" id="p-code" aria-labelledby="t-code" class="panel" hidden>
+          <p>One command in your terminal. Leave out <code>-e …</code> to start in demo mode.</p>
+          <div class="code"><button type="button" class="copy" data-copy-from="c-code">Copy</button><pre id="c-code">claude mcp add glim -e INSTAGRAM_ACCESS_TOKEN=IGAA… -- npx -y glim-mcp</pre></div>
+        </div>
+        <div role="tabpanel" id="p-cursor" aria-labelledby="t-cursor" class="panel" hidden>
+          <p>Add this to <code>~/.cursor/mcp.json</code> (or <code>.cursor/mcp.json</code> in a project).</p>
+          <div class="code"><button type="button" class="copy" data-copy-from="c-cursor">Copy</button><pre id="c-cursor">{
+  "mcpServers": {
+    "glim": {
+      "command": "npx",
+      "args": ["-y", "glim-mcp"],
+      "env": { "INSTAGRAM_ACCESS_TOKEN": "IGAA…your token…" }
+    }
+  }
+}</pre></div>
+        </div>
+      </div>
+      <p class="hint">Needs Node.js 20 or newer. Then ask: <q>Show my Instagram profile.</q></p>
+    </section>
+
+    <section id="token" class="wrap section token">
+      <h2>Get your access token</h2>
+      <ol class="numbered">
+        <li>Switch your Instagram account to <b>Professional</b> (Business or Creator) in the Instagram app.</li>
+        <li>Create an app at <a href="https://developers.facebook.com/apps">developers.facebook.com</a> and add the <b>Instagram</b> product with <b>Instagram API with Instagram Login</b>.</li>
+        <li>Under <b>Generate access tokens</b>, add your account and grant the permissions below.</li>
+        <li>Copy the long-lived token (starts with <code>IG</code>, lasts 60 days) into <code>INSTAGRAM_ACCESS_TOKEN</code>.</li>
+      </ol>
+      <div class="perms">
+        <span><code>instagram_business_basic</code> profile &amp; posts</span>
+        <span><code>…_content_publish</code> publishing</span>
+        <span><code>…_manage_comments</code> comments</span>
+        <span><code>…_manage_messages</code> DMs</span>
+        <span><code>…_manage_insights</code> insights</span>
+      </div>
+      <p class="hint">Using Facebook Login instead (token starts with <code>EAA</code>)? That works too, and it's the only way Meta allows hashtag search. Set <code>INSTAGRAM_USER_ID</code> if your Facebook account has several pages.</p>
+    </section>
+
+    <section id="faq" class="wrap section faq">
+      <h2>Questions</h2>
+      <details>
+        <summary>Is this safe for my account?</summary>
+        <p>Yes. Glim only uses Meta's official Instagram Graph API with a token you create yourself. It never asks for your password or scrapes the app, which is what gets accounts flagged.</p>
+      </details>
+      <details>
+        <summary>Where does my token go?</summary>
+        <p>Nowhere but Meta. Glim runs on your computer, reads the token from an environment variable and sends it only to graph.instagram.com (or graph.facebook.com) in a request header. No tool ever returns it to the AI, and it's removed from any error text.</p>
+      </details>
+      <details>
+        <summary>Why can't my AI reply to an old DM?</summary>
+        <p>Instagram only lets businesses reply within 24 hours of the person's last message. Glim tells you when a conversation is outside that window instead of failing silently.</p>
+      </details>
+      <details>
+        <summary>Does it work with personal Instagram accounts?</summary>
+        <p>No. Meta's API only supports professional accounts, but switching is free and takes a minute in the Instagram app.</p>
+      </details>
+      <details>
+        <summary>Can it post photos from my computer?</summary>
+        <p>Not directly: Instagram's servers download the media themselves, so it needs a public <code>https://</code> link (for example from your website, a CDN or cloud storage). Photos must be JPEG.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot-row">
+      <p>Glim is an independent open-source project, not affiliated with or endorsed by Meta or Instagram. MIT licensed · <a href="https://github.com/jagdish3135/glim">Source on GitHub</a></p>
+      <!-- Built with Knit: a small badge that grows into a card on hover or keyboard focus.
+     Paste as-is into the app footer. No JavaScript, no external files. Follows prefers-color-scheme,
+     and a data-theme="light|dark" attribute on <html> when the app has its own theme toggle.
+     Credit on the right side of the footer? Add data-align="right" so the card grows leftwards. -->
+<a class="bwk" data-align="right" href="https://jagdish3135.github.io/knit/" target="_blank" rel="noopener" aria-label="Built with Knit: a team's discipline, one session's cost">
+  <span class="bwk-pill" aria-hidden="true">
+    <span class="bwk-pill-a">built with</span>
+    <span class="bwk-pill-b"><svg width="13" height="13" viewBox="0 0 32 32"><path d="M5 16c0-6 5-10 11-10s11 4 11 10" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/><path d="M27 16c0 6-5 10-11 10S5 22 5 16" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-dasharray="4 5"/><circle cx="16" cy="16" r="3.5" fill="currentColor"/></svg>Knit</span>
+  </span>
+  <span class="bwk-card" aria-hidden="true">
+    <span class="bwk-mark"><svg width="24" height="24" viewBox="0 0 32 32"><path class="bwk-m1" d="M5 16c0-6 5-10 11-10s11 4 11 10" fill="none" stroke-width="3" stroke-linecap="round"/><path class="bwk-m2" d="M27 16c0 6-5 10-11 10S5 22 5 16" fill="none" stroke-width="3" stroke-linecap="round" stroke-dasharray="4 5"/><circle class="bwk-m3" cx="16" cy="16" r="3.5"/></svg></span>
+    <span class="bwk-text"><span class="bwk-title">Built with Knit</span><span class="bwk-sub">A team's discipline, one session's cost</span></span>
+    <svg class="bwk-arrow" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </span>
+</a>
+<style>
+.bwk{--bwk-ink:#16181D;--bwk-paper:#FFFFFF;--bwk-line:#DCD7CB;--bwk-muted:#525965;--bwk-gold:#F2C230;--bwk-gold-ink:#8F6A00;--bwk-pill-a:#16181D;--bwk-pill-a-ink:#E9EDF3;--bwk-tile:#16181D;--bwk-tile-a:#F2C230;--bwk-tile-b:#E9EDF3;
+  position:relative;display:inline-block;vertical-align:middle;text-decoration:none;font:600 12px/1 Verdana,"DejaVu Sans",system-ui,sans-serif;border-radius:8px;-webkit-tap-highlight-color:transparent}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .bwk{--bwk-ink:#E9EDF3;--bwk-paper:#151A22;--bwk-line:#2A3340;--bwk-muted:#A3AEBD;--bwk-gold-ink:#F2C230;--bwk-pill-a:#2A3340;--bwk-tile:#F2C230;--bwk-tile-a:#16181D;--bwk-tile-b:#16181D}}
+:root[data-theme="dark"] .bwk{--bwk-ink:#E9EDF3;--bwk-paper:#151A22;--bwk-line:#2A3340;--bwk-muted:#A3AEBD;--bwk-gold-ink:#F2C230;--bwk-pill-a:#2A3340;--bwk-tile:#F2C230;--bwk-tile-a:#16181D;--bwk-tile-b:#16181D}
+.bwk-pill{display:inline-flex;border-radius:6px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.14);transition:opacity .18s ease}
+.bwk-pill-a{background:var(--bwk-pill-a);color:var(--bwk-pill-a-ink);padding:6px 8px}
+.bwk-pill-b{background:var(--bwk-gold);color:#16181D;padding:6px 9px;display:inline-flex;align-items:center;gap:5px;font-weight:700}
+.bwk-card{position:absolute;left:0;bottom:0;display:flex;align-items:center;gap:12px;width:330px;box-sizing:border-box;padding:12px 14px;border-radius:14px;
+  background:var(--bwk-paper);border:1px solid var(--bwk-line);box-shadow:0 12px 30px -12px rgba(0,0,0,.35);color:var(--bwk-ink);
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;transform-origin:left bottom;transform:scale(.42);opacity:0;pointer-events:none;
+  transition:transform .28s cubic-bezier(.2,.8,.2,1),opacity .18s ease;z-index:20}
+.bwk[data-align="right"] .bwk-card{left:auto;right:0;transform-origin:right bottom}
+.bwk-mark{width:40px;height:40px;border-radius:11px;background:var(--bwk-tile);display:inline-flex;align-items:center;justify-content:center;flex:none}
+.bwk-m1{stroke:var(--bwk-tile-a)}.bwk-m2{stroke:var(--bwk-tile-b)}.bwk-m3{fill:var(--bwk-tile-a)}
+.bwk-text{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.bwk-title{font-weight:700;font-size:15px;line-height:1.2}
+.bwk-sub{font-weight:400;font-size:12px;line-height:1.3;color:var(--bwk-muted)}
+.bwk-arrow{color:var(--bwk-gold-ink);flex:none;transition:transform .2s ease}
+.bwk:hover .bwk-card,.bwk:focus-visible .bwk-card{transform:scale(1);opacity:1;pointer-events:auto}
+.bwk:hover .bwk-pill,.bwk:focus-visible .bwk-pill{opacity:0}
+.bwk:hover .bwk-arrow{transform:translateX(3px)}
+.bwk:focus-visible{outline:3px solid var(--bwk-gold);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){.bwk-card,.bwk-pill,.bwk-arrow{transition:opacity .01s}.bwk-card{transform:none}}
+</style>
+    </div>
+  </footer>
+  <script src="app.js" defer></script>
+</body>
+</html>
